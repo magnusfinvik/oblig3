@@ -8,16 +8,16 @@ public abstract class Card {
 	private static int currentCardNumber = 100;
 	
 	public Card(String name, String pinCode){
-		this.name = name;
-		this.pinCode = pinCode;
+		this.setName(name);
+		this.setPinCode(pinCode);
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
 		this.setCardSuspended(false);
 	}
 	
 	public Card(){
-		this.name = "Magnus Finvik";
-		this.pinCode = "9999";
+		this.setName("Magnus Finvik");
+		this.setPinCode("9999");
 		this.setCardSuspended(false);
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
@@ -32,8 +32,8 @@ public abstract class Card {
 	}
 	
 	public String toString(){
-		String output = name + " " + cardNumber + " "
-					+ pinCode + " " + isCardSuspended();
+		String output = getName() + " " + cardNumber + " "
+					+ getPinCode() + " " + isCardSuspended();
 		return output;
 	}
 	
@@ -45,6 +45,14 @@ public abstract class Card {
 
 	public void setCardSuspended(boolean cardSuspended) {
 		this.cardSuspended = cardSuspended;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
 	}
 
 }

@@ -2,6 +2,8 @@ package cardSystem;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+
 import org.junit.Test;
 
 public class EmployeeTest {
@@ -9,8 +11,15 @@ public class EmployeeTest {
 	@Test
 	public void test_isItOfficeTime() {
 		Employee card = new Employee();
-		System.out.println(card.calendar.HOUR);
 		assertEquals(true, card.isItOfficeTime());
+	}
+	
+	@Test
+	public void test_isItOfficeTime_HOUR_20(){
+		Employee card = new Employee();
+		card.setPinCode("1234");
+		card.calendar.set(Calendar.HOUR_OF_DAY, 20);
+		assertEquals(false, card.isItOfficeTime());
 	}
 	
 	@Test

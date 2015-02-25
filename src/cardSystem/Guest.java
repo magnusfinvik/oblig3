@@ -10,6 +10,13 @@ public class Guest extends Card{
 		this.setCardSuspended(false);
 	}
 	
+	public Guest(String name, String pin) {
+		this.setName(name);
+		this.setPinCode(pin);
+		expires.add(calendar.DAY_OF_YEAR, 7);
+		this.setCardSuspended(false);
+	}
+
 	public boolean accessGranted(){
 		if(calendar.getTime().after(expires.getTime())){
 			setCardSuspended(true);

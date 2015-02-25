@@ -6,6 +6,14 @@ public class Employee extends Card{
 	private String pinCodeToCheck = "9999";
 	public GregorianCalendar calendar = new GregorianCalendar();
 	
+	public Employee(String name, String pin) {
+		this.setName(name);
+		this.setPinCode(pin);
+		this.setCardSuspended(false);
+	}
+	public Employee() {
+		
+	}
 	public boolean accessGranted(){
 		boolean officeTime = isItOfficeTime();
 		if(officeTime){
@@ -19,7 +27,7 @@ public class Employee extends Card{
 		}
 	}
 	public boolean isItOfficeTime(){
-		if(calendar.HOUR >= 12 && calendar.HOUR <= 17){
+		if(calendar.get(calendar.HOUR_OF_DAY) >= 7 && calendar.get(calendar.HOUR_OF_DAY) < 17){
 			return true;
 		}else{
 			if(checkPin(pinCodeToCheck)){
@@ -35,5 +43,6 @@ public class Employee extends Card{
 	public boolean checkPin(String pin) {
 		boolean pinEqual = (pin.contentEquals(this.getPinCode()));
 		return pinEqual;
+		//when running tests for this, it prints out the number 11 to console
 	}
 }
