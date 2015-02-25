@@ -12,13 +12,13 @@ public abstract class Card {
 		this.pinCode = pinCode;
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
-		this.cardSuspended = false;
+		this.setCardSuspended(false);
 	}
 	
 	public Card(){
 		this.name = "Magnus Finvik";
 		this.pinCode = "9999";
-		this.cardSuspended = false;
+		this.setCardSuspended(false);
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
 	}
@@ -42,5 +42,9 @@ public abstract class Card {
 	}
 	
 	public abstract boolean checkPin(String pin);
+
+	public void setCardSuspended(boolean cardSuspended) {
+		this.cardSuspended = cardSuspended;
+	}
 
 }
