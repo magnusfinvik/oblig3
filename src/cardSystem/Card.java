@@ -1,37 +1,46 @@
 package cardSystem;
 
 public abstract class Card {
-	private String firstName;
-	private String lastName;
+	private String name;
 	private String pinCode;
 	private int cardNumber;
-	private boolean cardOpen;
+	private boolean cardSuspended;
 	private static int currentCardNumber = 100;
 	
-	public Card(String firstName, String lastName, String pinCode){
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public Card(String name, String pinCode){
+		this.name = name;
 		this.pinCode = pinCode;
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
-		this.cardOpen = true;
+		this.cardSuspended = false;
+	}
+	
+	public Card(){
+		this.name = "Magnus Finvik";
+		this.pinCode = "9999";
+		this.cardSuspended = false;
+		this.cardNumber = currentCardNumber+1;
+		currentCardNumber++;
 	}
 	
 	public String getName(){
-		String name = firstName + " " + lastName;
 		return name;
 	}
 	
 	public boolean isCardSuspended(){
-		return cardOpen;
+		return cardSuspended;
 	}
 	
 	public String toString(){
-		String output = firstName + " " + lastName + " " + cardNumber + " "
+		String output = name + " " + cardNumber + " "
 					+ pinCode + " " + isCardSuspended();
 		return output;
 	}
 	
-	public abstract boolean checkPin(int pin);
+	public String getPinCode(){
+		return this.pinCode;
+	}
+	
+	public abstract boolean checkPin(String pin);
 
 }
