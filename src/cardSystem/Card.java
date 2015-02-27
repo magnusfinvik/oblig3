@@ -55,4 +55,8 @@ public abstract class Card {
 		this.pinCode = pinCode;
 	}
 
+	public int getCardNumber() {
+		return cardNumber;
+	}
+
 }

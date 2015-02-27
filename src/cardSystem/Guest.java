@@ -6,6 +6,8 @@ public class Guest extends Card{
 	public GregorianCalendar calendar = new GregorianCalendar();
 	public GregorianCalendar expires = new GregorianCalendar();
 	public Guest(){
+		this.setName("Guest");
+		this.setPinCode("9999");
 		expires.add(calendar.DAY_OF_YEAR, 7);
 		this.setCardSuspended(false);
 	}
@@ -22,7 +24,7 @@ public class Guest extends Card{
 			setCardSuspended(true);
 			return false;
 		}else{
-		return true;
+			return true;
 		}
 		
 	}

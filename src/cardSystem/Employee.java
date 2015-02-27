@@ -1,5 +1,6 @@
 package cardSystem;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Employee extends Card{
@@ -27,10 +28,13 @@ public class Employee extends Card{
 		}
 	}
 	public boolean isItOfficeTime(){
-		if(calendar.get(calendar.HOUR_OF_DAY) >= 7 && calendar.get(calendar.HOUR_OF_DAY) < 17){
+		if(isCardSuspended()){
+			return false;
+		}
+		if(isItOfficeHours(calendar) && isItWeekDay(calendar) == true){
 			return true;
 		}else{
-			if(checkPin(pinCodeToCheck)){
+			if(checkPin(pinCodeToCheck)){//fix this on a later stage
 				return true;
 			}else{
 				return false;
@@ -39,10 +43,28 @@ public class Employee extends Card{
 		
 	}
 	
+	private boolean isItOfficeHours(Calendar calendar) {
+		int hourOfDay = calendar.get(calendar.HOUR_OF_DAY);
+		int minuteOfHour = calendar.get(calendar.MINUTE);
+		if(hourOfDay >= 7 && hourOfDay < 17)
+			return true;
+		else if(hourOfDay == 17 && minuteOfHour == 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	private boolean isItWeekDay(Calendar calendar) {
+		int dayOfWeek = calendar.get(calendar.DAY_OF_WEEK);
+		if(dayOfWeek >= 2 && dayOfWeek <= 6){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	@Override
 	public boolean checkPin(String pin) {
 		boolean pinEqual = (pin.contentEquals(this.getPinCode()));
 		return pinEqual;
-		//when running tests for this, it prints out the number 11 to console
 	}
 }
