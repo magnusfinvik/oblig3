@@ -3,7 +3,8 @@ package towerOfHanoi;
 import java.util.Scanner;
 
 public class TowerOfHanoi {
-	static int numberOfMoves = 0;
+	private static int numberOfMoves = 0;
+	private static int numberOfRecursiveCalls = 0;
 	public static void main(String[] args){
 		Scanner input = new Scanner(System.in);
 		System.out.print("skriv inn antall disker: ");
@@ -13,9 +14,11 @@ public class TowerOfHanoi {
 		System.out.println("trekkene er:");
 		moveDisks(numberOfDisks, 'A', 'B', 'C');
 		System.out.println("antall trekk er: " + numberOfMoves);
+		System.out.println("antell rekursive kall: " + numberOfRecursiveCalls);
 	}
 
 	private static void moveDisks(int n, char fromTower, char toTower, char helperTower) {
+		numberOfRecursiveCalls++;
 		if (n == 1){
 			System.out.println("Flytt disk " + n + " fra " + fromTower + " til " + toTower);
 		}
