@@ -15,9 +15,17 @@ public class TestGuest {
 	}
 	
 	@Test
-	public void test_accessGranted_expired(){
+	public void test_accessGranted_expiredAtYearEnd(){
 		Guest card = new Guest();
-		card.calendar.add(Calendar.DAY_OF_YEAR, 8);
+		card.calendar.set(2015, 11, 28);
+		card.calendar.add(card.calendar.DAY_OF_YEAR, 8);
+		assertEquals(false, card.accessGranted());
+	}
+	
+	@Test
+	public void test_accessGranted_expiredAtActualTodayDate(){
+		Guest card = new Guest();
+		card.calendar.add(card.calendar.DAY_OF_YEAR, 8);
 		assertEquals(false, card.accessGranted());
 	}
 
