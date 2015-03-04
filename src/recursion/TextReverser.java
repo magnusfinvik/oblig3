@@ -8,18 +8,19 @@ public class TextReverser {
 		System.out.println("Skriv inn det ordet du vil snu om på: ");
 		Scanner input = new Scanner(System.in);
 		String inputText = input.next();
+		System.out.print("Det omsnudde ordet er : ");
 		reverse(inputText);
 
 	}
+	
 	public static void reverse(String text){
 		int n = text.length();
 		if(n == 1){
-			System.out.print(text.charAt(0));
+			System.out.println(text.charAt(0));
 		}
 		else{
 			System.out.print(text.charAt(text.length()-1));
 			text = text.substring(0, text.length()-1);
-			
 			reverse(text);
 		}
 	}
