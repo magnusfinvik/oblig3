@@ -26,6 +26,7 @@ public class TowerOfHanoi {
 			System.out.println("Flytt disk " + n + " fra " + fromTower + " til " + toTower);
 			moveDisks(n-1, helperTower, toTower, fromTower);
 			numberOfRecursiveCalls++;
+			//skal den skrive ut for hver gang akkurat denne metoden kalles, eller for hver gang metoden kaller seg selv?
 		}
 	}
 }

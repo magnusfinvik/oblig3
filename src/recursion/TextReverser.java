@@ -10,6 +10,7 @@ public class TextReverser {
 		String inputText = input.next();
 		System.out.print("Det omsnudde ordet er : ");
 		reverse(inputText);
+		//skal denne kunne snu om en hel setning eller kun enkeltord?
 
 	}
 	
