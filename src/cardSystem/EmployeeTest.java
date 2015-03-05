@@ -130,5 +130,46 @@ public class EmployeeTest {
 		card.setCardSuspended(true);
 		assertFalse(card.accessGranted());
 	}
+	
+	@Test
+	public void testSetFirstName_onlyOneFirstNameAndLastName(){
+		Employee card = new Employee();
+		card.setFirstName(card.getName());
+		assertEquals("Magnus", card.getFirstName());
+	}
+	@Test
+	public void testSetFirstName_threeNamesInTotal(){
+		Employee card = new Employee("Harald Martin Haraldsen", "1234");
+		card.setFirstName(card.getName());
+		assertEquals("Harald Martin", card.getFirstName());
+	}
+	@Test
+	public void testSetLastName_OnlyOneFirstAndLastName(){
+		Employee card = new Employee();
+		card.setLastName(card.getName());
+		assertEquals("Finvik", card.getLastName());
+	}
+	@Test
+	public void testSetLastName_threeNamesInTotal(){
+		Employee card = new Employee("Harald Martin Haraldsen", "1234");
+		card.setLastName(card.getName());
+		assertEquals("Haraldsen", card.getLastName());
+	}
+	@Test
+	public void testSetFullName_onlyOneFirstAndLastName(){
+		Employee card = new Employee();
+		card.setLastName(card.getName());
+		card.setFirstName(card.getName());
+		card.setFullName(card.getFirstName(), card.getLastName());
+		assertEquals("Magnus Finvik", card.getFullName());
+	}
+	@Test
+	public void testSetFullName_threeNamesInTotal(){
+		Employee card = new Employee("Harald Martin Haraldsen", "1234");
+		card.setLastName(card.getName());
+		card.setFirstName(card.getName());
+		card.setFullName(card.getFirstName(), card.getLastName());
+		assertEquals("Harald Martin Haraldsen", card.getFullName());
+	}
 
 }
