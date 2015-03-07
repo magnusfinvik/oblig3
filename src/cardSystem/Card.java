@@ -1,11 +1,16 @@
 package cardSystem;
 
-public abstract class Card {
+import java.util.ArrayList;
+import java.util.Collections;
+
+public abstract class Card implements Cloneable, Comparable<Card>{
 	private String name;
 	private String pinCode;
 	private int cardNumber;
 	private boolean cardSuspended;
 	private static int currentCardNumber = 100;
+	private String firstName;
+	private String lastName;
 	
 	public Card(String name, String pinCode){
 		this.setName(name);
@@ -13,6 +18,8 @@ public abstract class Card {
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
 		this.setCardSuspended(false);
+		this.setFirstName(name);
+		this.setLastName(name);
 	}
 	
 	public Card(){
@@ -21,6 +28,8 @@ public abstract class Card {
 		this.setCardSuspended(false);
 		this.cardNumber = currentCardNumber+1;
 		currentCardNumber++;
+		this.setFirstName("Magnus Finvik");
+		this.setLastName("Magnus Finvik");
 	}
 	
 	public String getName(){
@@ -59,4 +68,23 @@ public abstract class Card {
 		return cardNumber;
 	}
 
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public Card clone() throws CloneNotSupportedException{
+		return (Card)super.clone();
+	}
 }

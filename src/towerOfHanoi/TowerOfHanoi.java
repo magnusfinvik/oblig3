@@ -12,7 +12,7 @@ public class TowerOfHanoi {
 		numberOfMoves = ((int) Math.pow(2, numberOfDisks)-1);
 		System.out.println("trekkene er:");
 		moveDisks(numberOfDisks, 'A', 'B', 'C');
-		System.out.println("antall trekk er: " + numberOfMoves);
+		System.out.println("\nantall trekk er: " + numberOfMoves);
 		System.out.println("antall rekursive kall: " +numberOfRecursiveCalls);
 	}
 	private static void moveDisks(int n, char fromTower, char toTower, char helperTower) {
@@ -26,7 +26,6 @@ public class TowerOfHanoi {
 			System.out.println("Flytt disk " + n + " fra " + fromTower + " til " + toTower);
 			moveDisks(n-1, helperTower, toTower, fromTower);
 			numberOfRecursiveCalls++;
-			//skal den skrive ut for hver gang akkurat denne metoden kalles, eller for hver gang metoden kaller seg selv?
 		}
 	}
 }

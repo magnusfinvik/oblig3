@@ -4,26 +4,33 @@ import java.util.Scanner;
 
 public class TextReverser {
 
+	private static int count = 0;
 	public static void main(String[] args) {
 		System.out.println("Skriv inn det ordet du vil snu om på: ");
 		Scanner input = new Scanner(System.in);
-		String inputText = input.next();
+		String inputText = input.nextLine();
 		System.out.print("Det omsnudde ordet er : ");
 		reverse(inputText);
-		//skal denne kunne snu om en hel setning eller kun enkeltord?
 
 	}
 	
-	public static void reverse(String text){
-		int n = text.length();
-		if(n == 1){
-			System.out.println(text.charAt(0));
+	public static void reverse(String text, int last){
+		if(last >= 1){
+			System.out.print(text.charAt(last-1));
+			count++;
+			reverse(text, last-1);
 		}
 		else{
-			System.out.print(text.charAt(text.length()-1));
-			text = text.substring(0, text.length()-1);
-			reverse(text);
+			System.out.println("\nNumber of characters: " + count);
+			count = 0;
+			
 		}
+	}
+	
+	public static void reverse(String text){
+		System.out.print(text.charAt(text.length()-1));
+		count++;
+		reverse(text, text.length()-1);
 	}
 
 }

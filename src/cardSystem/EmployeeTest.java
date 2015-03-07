@@ -171,5 +171,29 @@ public class EmployeeTest {
 		card.setFullName(card.getFirstName(), card.getLastName());
 		assertEquals("Harald Martin Haraldsen", card.getFullName());
 	}
+	@Test
+	public void testCompareTo_NamesAreTheSame(){
+		Card emp1 = new Employee();
+		Card emp2 = new Employee();
+		assertTrue(0 == emp1.compareTo(emp2));
+	}
+	@Test
+	public void testCompareTo_NamesAreNotTheSame_firstLastNameAlphabeticlyBeforTheOther(){
+		Card emp1 = new Employee("Peder Abelsen", "1234");
+		Card emp2 = new Employee("Peder Hansen", "1234");
+		assertTrue(emp1.compareTo(emp2) < 0);
+	}
+	@Test
+	public void testCompareTo_namesLastNamesAreTheSame_firstNamesAreDifferent(){
+		Card emp1 = new Employee("Askil Hansen", "1234");
+		Card emp2 = new Employee("Peder Hansen", "1234");
+		assertTrue(emp1.compareTo(emp2) < 0);
+	}
+	@Test
+	public void testCompareTo_lastNamesAreNotTheSame(){
+		Card emp1 = new Employee("Askil Hansen", "1234");
+		Card emp2 = new Employee("Askil Abelsen", "1234");
+		assertTrue(emp1.compareTo(emp2) > 0);
+	}
 
 }

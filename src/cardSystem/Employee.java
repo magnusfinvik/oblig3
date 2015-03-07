@@ -9,15 +9,15 @@ public class Employee extends Card implements Permanent{
 	public GregorianCalendar calendar = new GregorianCalendar();
 	public String firstName;
 	public String lastName;
-	private double creditConstant;
-	private double wage;
-	private int bonusConstant;
-	private int seniority;
+	protected double creditConstant = 0.5;
+	protected double wage;
+	protected double bonusConstant = 3.0;
+	protected int seniority;
 	
 	public Employee(String name, String pin) {
-		this.setName(name);
-		this.setPinCode(pin);
-		this.setCardSuspended(false);
+		super(name, pin);
+		this.seniority = 3;
+		this.wage = 150;
 	}
 	public Employee() {
 		
@@ -115,5 +115,13 @@ public class Employee extends Card implements Permanent{
 	public double calculateBonus() {
 		double bonus = bonusConstant*seniority;
 		return bonus;
+	}
+	@Override
+	public int compareTo(Card card) {
+		if(this.getLastName().compareTo(card.getLastName()) != 0){
+			return this.getLastName().compareToIgnoreCase(card.getLastName());
+		}else{
+			return this.getFirstName().compareToIgnoreCase(card.getFirstName());
+		}
 	}
 }

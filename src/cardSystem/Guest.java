@@ -35,5 +35,10 @@ public class Guest extends Card{
 		return isPinCorrect;
 	}
 
+	@Override
+	public int compareTo(Card card) {
+		return 0;
+	}
+
 
 }
