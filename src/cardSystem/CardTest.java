@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class CardTest {
 
-	 public static void main(String[] args) {
+	 public static void main(String[] args) throws CloneNotSupportedException {
 
 		 ArrayList<Card> reg = new ArrayList<Card>();
 
@@ -28,5 +28,8 @@ public class CardTest {
 		 
 		 Collections.sort(reg);
 		 System.out.println(reg.toString());
+		 
+		 Card clonedCard = c1.clone();
+		 System.out.println("\n" + clonedCard.toString() + " is a clone of: " + c1.toString());
 		 }
 		}
