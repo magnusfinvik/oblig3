@@ -22,25 +22,33 @@ public class TestCard{
 	}
 	@Test
 	public void testCardNumber(){
-		ArrayList<Card> list = new ArrayList<Card>();
-		list.add(new Employee());
-		list.add(new Guest());
-		list.get(1);
-		assertEquals(101, list.get(0).getCardNumber());
+		Card card = new Employee();
+		Card card2 = new Employee();
+		assertNotEquals(card2.getCardNumber(), card.getCardNumber());
 	}
 	@Test
-	public void testCardClone_notSame() {
+	public void testCardClone_notSame() throws CloneNotSupportedException {
 		Card card = new Employee("Pål Hansen", "pin");
 		Card card2 = new Employee("Linda Olsen", "123");
 		Card clonedCard = card.clone();
 		assertNotSame(card2, clonedCard);
 	}
 	@Test
-	public void testCardClone_sameInfo(){
+	public void testCardClone_sameInfo() throws CloneNotSupportedException{
 		Card card = new Employee("Pål Hansen", "pin");
 		Card card2 = new Employee("Pål Hansen", "pin");
 		Card clonedCard = card.clone();
-		assertEquals(card2, clonedCard);
+		assertEquals(card.getName(), clonedCard.getName());
+		assertEquals(card.getPinCode(),clonedCard.getPinCode());
+		assertEquals(card.isCardSuspended(), clonedCard.isCardSuspended());
+		
+	}
+	@Test
+	public void testCardClone_sameName() throws CloneNotSupportedException{
+		Card card = new Employee("Pål Hansen", "pin");
+		Card card2 = new Employee();
+		Card clonedCard = card.clone();
+		assertEquals(clonedCard.getName(), card.getName());
 	}
 	
 	
